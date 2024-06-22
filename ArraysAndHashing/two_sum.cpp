@@ -1,26 +1,28 @@
-// LC - 1
+// Problem Link: https://leetcode.com/problems/two-sum/
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+using namespace std;
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        
-        vector<int> res;
 
-        unordered_map<int, int> mpp;
+        unordered_map<int, int> umpp;
 
         for (int i=0; i<nums.size(); i++) {
-            int compliment = target - nums[i];
-            if (mpp.find(compliment) != mpp.end()) {
-                res.push_back(mpp[compliment]);
-                res.push_back(i);
+            int complement = target - nums[i];
 
-                return res;
+            if (umpp.find(complement) != umpp.end()) {
+                return {i, umpp[complement]};
             }
 
-            mpp[nums[i]] = i;
-
+            umpp[nums[i]] = i;
         }
 
-        return res;
+        return {};
+        
     }
 };
